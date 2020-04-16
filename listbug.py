@@ -1,4 +1,4 @@
-import conducto as do
+import conducto as co
 import typing
 
 ## BUG: This doesn't parse L correctly when called from command line:
@@ -16,14 +16,14 @@ def g(i: int, L: typing.List[str] = "d,e,f"):
 
 ## python listbug.py pipeline --func=f ## works as expected
 ## python listbug.py pipeline --func=g ## TypeError (correctly?)
-def pipeline(func: str = "f") -> do.Serial:
-    output = do.Serial()
+def pipeline(func: str = "f") -> co.Serial:
+    output = co.Serial()
     if func == "f":
         for i in range(5,7):
-            output[str(i)] = do.asnode(f, i=i)
+            output[str(i)] = co.asnode(f, i=i)
     else:
         for i in range(7,9):
-            output[str(i)] = do.asnode(g, i=i)
+            output[str(i)] = co.asnode(g, i=i)
     return output
 
 if __name__ == "__main__":
@@ -31,4 +31,4 @@ if __name__ == "__main__":
     f(1)
     ## g doesn't error, but L is not a list
     g(2)
-    do.main()
+    co.main()
