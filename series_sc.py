@@ -7,4 +7,5 @@ def sc_test() -> co.Serial:
     output['error'] = co.Exec("cat does_not_exist.txt")
     return output
 
-
+if __name__ == '__main__':
+    co.main()
