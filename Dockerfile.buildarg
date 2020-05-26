@@ -1,0 +1,3 @@
+FROM alpine
+ARG my_arg
+RUN echo $my_arg > /content.txt
