@@ -4,7 +4,7 @@ def sam(i):
     print(i)
 
 def pipe() -> co.Serial:
-    root = co.Serial()#image=co.Image(copy_dir="."))
+    root = co.Serial(image=co.Image(copy_dir="."))
     root["Pre-test"] = co.Exec(sam, 34)
     root["Deploy"] = co.Exec("echo Deploy service")
     root["Test-site"] = co.Lazy(test_service, url="http://testsite", num_tests=5)

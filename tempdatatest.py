@@ -17,7 +17,7 @@ def read_pipeline_data():
 def run() -> co.Serial:
     co.Image.register_directory("JOEL_PIPELINES", ".")
 
-    output = co.Serial(image=co.Image(copy_dir='${JOEL_PIPELINES}'))
+    output = co.Serial(image=co.Image(copy_dir='.'))
     output["save_user_data1"] = co.Exec(save_user_data, 1)
     output["save_pipeline_data1"] = co.Exec(save_pipeline_data, 1)
     output["save_user_data2"] = co.Exec(save_user_data, 2)
