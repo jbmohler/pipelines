@@ -1,11 +1,5 @@
 import conducto as co
 
-with open("Dockerfile.buildarg", "w") as f:
-    f.write("""\
-FROM alpine
-ARG my_arg
-RUN echo $my_arg > /content.txt""")
-
 
 def argged() -> co.Serial:
     output = co.Serial()

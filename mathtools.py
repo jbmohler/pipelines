@@ -9,19 +9,19 @@ def domath_in_images() -> co.Parallel:
 
     output = co.Parallel()
     output["node1"] = co.Exec("python -c '{}'".format(cmd), image=mathimage("alpine"))
-    output["node1"] = co.Exec(
+    output["node2"] = co.Exec(
         "python -c '{}'".format(cmd), image=mathimage("debian:buster")
     )
-    output["node1"] = co.Exec(
+    output["node3"] = co.Exec(
         "python -c '{}'".format(cmd), image=mathimage("debian:stretch")
     )
-    output["node1"] = co.Exec(
+    output["node4"] = co.Exec(
         "python -c '{}'".format(cmd), image=mathimage("python:3.6")
     )
-    output["node1"] = co.Exec(
+    output["node5"] = co.Exec(
         "python -c '{}'".format(cmd), image=mathimage("python:3.8")
     )
-    output["node1"] = co.Exec(
+    output["node6"] = co.Exec(
         "python -c '{}'".format(cmd), image=mathimage("python:3.7")
     )
     return output
