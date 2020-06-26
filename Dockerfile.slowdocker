@@ -1,0 +1,5 @@
+FROM alpine
+# cache smash
+ARG my_arg
+RUN echo $my_arg
+RUN sleep 10
