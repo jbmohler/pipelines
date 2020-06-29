@@ -29,7 +29,7 @@ def domath_in_images() -> co.Parallel:
 
 def domath() -> co.Serial:
     #image = co.Image(image="python:3.7-alpine", copy_dir=".", reqs_py=["sympy"])
-    image = co.Image(image="python:3.7-alpine", reqs_py=["sympy"])
+    image = co.Image(image="python:3.7-alpine", reqs_py=["sympy"], copy_dir='.')
 
     cmd = "from sympy.ntheory.factor_ import factorint; print(factorint(298374981946161828218))"
 

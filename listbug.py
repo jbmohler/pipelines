@@ -20,10 +20,10 @@ def pipeline(func: str = "f") -> co.Serial:
     output = co.Serial()
     if func == "f":
         for i in range(5,7):
-            output[str(i)] = co.asnode(f, i=i)
+            output[str(i)] = co.Exec(f, i=i)
     else:
         for i in range(7,9):
-            output[str(i)] = co.asnode(g, i=i)
+            output[str(i)] = co.Exec(g, i=i)
     return output
 
 if __name__ == "__main__":
