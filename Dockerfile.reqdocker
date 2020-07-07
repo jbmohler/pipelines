@@ -1,7 +1,9 @@
 FROM python:3.7-slim
 
+# requires-docker settings needs both docker and ssh installed
+
 RUN apt-get update && apt-get install -y \
-  curl
+  curl openssh-client
 
 RUN curl -sSL https://get.docker.com | sh
 
