@@ -1,3 +1,4 @@
+import os
 import conducto as co
 
 
@@ -15,13 +16,27 @@ def validated_lazy(value: int) -> co.Serial:
     return output
 
 
-def master() -> co.Parallel:
+def test_error_generates() -> co.Parallel:
     image = co.Image(image="alpine", copy_dir=".", reqs_py=["conducto"])
 
     with co.Parallel(image=image) as output:
         output["lazy1"] = co.Lazy(validated_lazy, 85)
         output["lazy2"] = co.Lazy(validated_lazy, 104)
         output["lazy3"] = co.Lazy(forgot_return)
+
+    return output
+
+def register():
+    co.Image.share_directory("something", ".")
+
+    print("cloud will error; local will show shares")
+    os.system("cat /root/.conducto/{os.environ['CONDUCTO_PROFILE']}/config")
+
+def late_register() -> co.Parallel:
+    image = co.Image(image="alpine", copy_dir=".", reqs_py=["conducto"])
+
+    with co.Parallel(image=image) as output:
+        output["lazy1"] = co.Exec(register)
 
     return output
 

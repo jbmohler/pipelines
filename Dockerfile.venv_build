@@ -1,0 +1,5 @@
+FROM python:3.7-slim
+
+# Install python3-dev and gcc for pip, the rest for docker cli
+RUN apt-get update && apt-get install -y \
+    python3-dev gcc
